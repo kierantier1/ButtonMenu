@@ -1,0 +1,19 @@
+All journal entries relating to ButtonMenu
+
+October 23, 2017
+-Starting to examine Button and MenuG to merge them, without using Scene2d
+
+October 24, 2017
+-continuing with ButtonMenu
+
+October 25, 2017
+-deleted ButtonMenu and retrying it with a different structure
+
+October 26, 2017
+-importing the programs doesn�t work for some reason.
+
+October 27, 2017
+-restarting again, moving the hit detection from Button into the Screens from MenuG
+
+October 31, 2017
+-trying to structure Journal into the program files for ButtonMenu
