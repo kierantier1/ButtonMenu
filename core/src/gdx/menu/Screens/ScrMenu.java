@@ -6,21 +6,19 @@ import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+import com.badlogic.gdx.graphics.OrthographicCamera;
 
 import gdx.menu.GamMenu;
 
-
-
-/**
- * Created by luke on 2016-04-05.
- */
-
 public class ScrMenu implements Screen, InputProcessor {
     GamMenu gamMenu;
-
+    OrthographicCamera oc;
     SpriteBatch batch;
     BitmapFont screenName;
-
+    public void create(){
+       oc = new OrthographicCamera(Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
+       oc.setToOrtho(true, Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
+    }
     public ScrMenu(GamMenu _gamMenu) {  //Referencing the main class.
         gamMenu = _gamMenu;
     }

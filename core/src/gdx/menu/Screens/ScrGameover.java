@@ -16,7 +16,11 @@ public class ScrGameover implements Screen, InputProcessor {
     GamMenu gamMenu;
     SpriteBatch batch;
     Sprite sprButtonMenu, sprButtonPlay;
-
+    
+    public void create(){
+        oc = new OrthographicCamera(Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
+	oc.setToOrtho(true, Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
+    }
     public ScrGameover(GamMenu _gamMenu) {  //Referencing the main class.
         gamMenu = _gamMenu;
     }

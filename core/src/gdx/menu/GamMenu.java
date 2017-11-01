@@ -13,7 +13,7 @@ public class GamMenu extends Game {
     ScrPlay scrPlay;
     ScrGameover scrGameover;
     ScrOptions scrOptions;
-    int nScreen; // 0 for menu, 1 for play, and 2 for game over
+    int nScreen; // 0 for menu, 1 for play, 2 for gameover, 3 for options
     
     public void updateState(int _nScreen) {
         nScreen = _nScreen;

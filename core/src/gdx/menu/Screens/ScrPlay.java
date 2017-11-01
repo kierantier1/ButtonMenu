@@ -13,7 +13,7 @@ public class ScrPlay implements Screen, InputProcessor {
     GamMenu gamMenu;
     SpriteBatch batch;
 
-
+    Sprite sprButton;
     public ScrPlay(GamMenu _gamMenu) {  //Referencing the main class.
         gamMenu = _gamMenu;
     }

@@ -4,6 +4,7 @@ import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.InputProcessor;
 import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.graphics.GL20;
+import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import gdx.menu.GamMenu;
@@ -11,10 +12,14 @@ import gdx.menu.GamMenu;
 
 public class ScrOptions implements Screen, InputProcessor{
     GamMenu gamMenu;
-
+    OrthographicCamera oc;
     SpriteBatch batch;
     BitmapFont screenName;
     
+    public void create(){
+        oc = new OrthographicCamera(Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
+	oc.setToOrtho(true, Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
+    }
     public ScrOptions(GamMenu _gamMenu){
         gamMenu = _gamMenu;
     }
