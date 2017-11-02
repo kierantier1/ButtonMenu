@@ -22,14 +22,16 @@ public class ScrMenu implements Screen, InputProcessor {
     public ScrMenu(GamMenu _gamMenu) {  //Referencing the main class.
         gamMenu = _gamMenu;
     }
-
+    
+    @Override
     public void show() {
         batch = new SpriteBatch();
         screenName = new BitmapFont();
         btnPlayListener();
         btnOptionsListener();
     }
-
+    
+    @Override
     public void render(float delta) {
         Gdx.gl.glClearColor(0, 1, 0, 1); //Green background.
         Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);

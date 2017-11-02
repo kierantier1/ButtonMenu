@@ -23,7 +23,8 @@ public class ScrPlay implements Screen, InputProcessor {
         btnMenuListener();
         btnGameoverListener();
     }
-
+    
+    @Override
     public void render(float delta) {
         Gdx.gl.glClearColor(.135f, .206f, .235f, 1); //blue background.
         Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
