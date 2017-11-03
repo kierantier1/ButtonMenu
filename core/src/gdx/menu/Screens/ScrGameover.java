@@ -7,12 +7,14 @@ import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.g2d.Sprite;
+import com.badlogic.gdx.graphics.Texture;
 import gdx.menu.GamMenu;
 
 
 
 public class ScrGameover implements Screen, InputProcessor {
     OrthographicCamera oc;
+    Texture txButtonM, txButtonP;
     GamMenu gamMenu;
     SpriteBatch batch;
     Sprite sprButtonMenu, sprButtonPlay;
@@ -20,17 +22,19 @@ public class ScrGameover implements Screen, InputProcessor {
     public void create(){
         oc = new OrthographicCamera(Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
 	oc.setToOrtho(true, Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
+        txButtonM = new Texture("badlogic.jpg");
+        sprButtonMenu = new Sprite(txButtonM);
     }
     public ScrGameover(GamMenu _gamMenu) {  //Referencing the main class.
         gamMenu = _gamMenu;
     }
 
+    @Override
     public void show() {
         oc = new OrthographicCamera(Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
 	oc.setToOrtho(true, Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
         batch = new SpriteBatch();
-        btnMenuListener();
-        btnPlayListener();
+
     }
     @Override
     public void render(float delta) {
@@ -40,14 +44,11 @@ public class ScrGameover implements Screen, InputProcessor {
         batch.end();
     }
 
-    public void btnMenuListener() {
-         gamMenu.updateState(0);
-    }
-
-    public void btnPlayListener() {
-         gamMenu.updateState(1);
-    }
-
+    /*
+     * UpdateState(0) for Menu
+     * UpdateState(1) for Play
+     */
+    
     @Override
     public void resize(int width, int height) {
 
@@ -111,5 +112,14 @@ public class ScrGameover implements Screen, InputProcessor {
     @Override
     public boolean scrolled(int amount) {
         return false;
+    }
+    public boolean IsHit(int nX, int nY){
+        System.out.println("Run IsHit");
+        if(nX>sprButtonMenu.getX() && nX <sprButtonMenu.getX()+sprButtonMenu.getWidth()&& nY>sprButtonMenu.getY() && nY<sprButtonMenu.getY()+sprButtonMenu.getHeight()){
+            System.out.println("hit");
+            return true;
+        }else{
+            return false;
+        }
     }
 }
