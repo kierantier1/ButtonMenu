@@ -5,6 +5,7 @@ import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.InputProcessor;
 import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.graphics.GL20;
+import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.Texture;
@@ -15,6 +16,7 @@ import gdx.menu.GamMenu;
 public class ScrGameover implements Screen, InputProcessor {
     OrthographicCamera oc;
     Texture txButtonM, txButtonP;
+    BitmapFont screenName;
     GamMenu gamMenu;
     SpriteBatch batch;
     Sprite sprButtonMenu, sprButtonPlay;
@@ -34,7 +36,8 @@ public class ScrGameover implements Screen, InputProcessor {
         oc = new OrthographicCamera(Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
 	oc.setToOrtho(true, Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
         batch = new SpriteBatch();
-
+        screenName = new BitmapFont();
+        screenName.setFlip(false, true);
     }
     @Override
     public void render(float delta) {
@@ -42,7 +45,8 @@ public class ScrGameover implements Screen, InputProcessor {
         Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
         batch.begin();
         batch.setProjectionMatrix(oc.combined);
-        sprButtonMenu.draw(batch);
+        screenName.draw(batch, "GAME OVER", 230, 275);
+        //sprButtonMenu.draw(batch);
         batch.end();
     }
 

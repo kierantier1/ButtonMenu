@@ -30,13 +30,13 @@ public class GamMenu extends Game {
 
     @Override
     public void create() {
-        nScreen = 2;
+        nScreen = 0;
         // notice that "this" is passed to each screen. Each screen now has access to methods within the "game" master program
         scrMenu = new ScrMenu(this);
         scrPlay = new ScrPlay(this);
         scrGameover = new ScrGameover(this);
         scrOptions = new ScrOptions(this);
-        updateState(0);
+        updateState(2);
     }
 
     @Override
