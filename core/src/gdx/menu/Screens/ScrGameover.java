@@ -41,6 +41,8 @@ public class ScrGameover implements Screen, InputProcessor {
         Gdx.gl.glClearColor(0, 0, 0, 1); //black background.
         Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
         batch.begin();
+        batch.setProjectionMatrix(oc.combined);
+        sprButtonMenu.draw(batch);
         batch.end();
     }
 
