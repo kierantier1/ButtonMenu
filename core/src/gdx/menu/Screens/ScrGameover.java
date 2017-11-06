@@ -24,8 +24,13 @@ public class ScrGameover implements Screen, InputProcessor {
     public void create(){
         oc = new OrthographicCamera(Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
 	oc.setToOrtho(true, Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
+        oc.update();
+        batch = new SpriteBatch();
+        oc = new OrthographicCamera(Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
+	oc.setToOrtho(true, Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
         txButtonM = new Texture("badlogic.jpg");
         sprButtonMenu = new Sprite(txButtonM);
+        Gdx.input.setInputProcessor(this);
     }
     public ScrGameover(GamMenu _gamMenu) {  //Referencing the main class.
         gamMenu = _gamMenu;
@@ -33,14 +38,12 @@ public class ScrGameover implements Screen, InputProcessor {
 
     @Override
     public void show() {
-        oc = new OrthographicCamera(Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
-	oc.setToOrtho(true, Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
-        batch = new SpriteBatch();
+        
         //screenName = new BitmapFont();
         //screenName.setFlip(false, true);
     }
     @Override
-    public void render(float delta) {
+    public void render(float Delta) {
         Gdx.gl.glClearColor(0, 0, 0, 1); //black background.
         Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
         batch.begin();
@@ -49,7 +52,7 @@ public class ScrGameover implements Screen, InputProcessor {
         sprButtonMenu.draw(batch);            
         batch.end();
     }
-
+    
     /*
      * UpdateState(0) for Menu
      * UpdateState(1) for Play
@@ -77,7 +80,8 @@ public class ScrGameover implements Screen, InputProcessor {
 
     @Override
     public void dispose() {
-
+        batch.dispose();
+        txButtonM.dispose();
     }
 
     @Override

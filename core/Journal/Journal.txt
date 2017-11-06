@@ -20,3 +20,4 @@ October 31, 2017
 
 November 3, 2017
 -setFlip() doesn't work on BitmapFont.  Next course of action will be to embed text within the sprites, which i CAN flip using setFlip.
+-getting a NullPointerException when running ButtonMenu, investigating...
