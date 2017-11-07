@@ -24,3 +24,9 @@ November 3, 2017
 
 November 6, 2017
 -still unable to run ButtonMenu on ScrGameover, where the hit detection code is
+
+November 7, 2017
+-Mr Grondin reviewed Status Report 3 and went over the code, and moved all of the declarations from create() to show(), and now it works.
+-Now to make hit detection work
+
+November 8, 2017
