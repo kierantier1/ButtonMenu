@@ -5,7 +5,6 @@ import com.badlogic.gdx.InputProcessor;
 import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.OrthographicCamera;
-import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import gdx.menu.GamMenu;
 
@@ -14,11 +13,11 @@ public class ScrOptions implements Screen, InputProcessor{
     GamMenu gamMenu;
     OrthographicCamera oc;
     SpriteBatch batch;
-    BitmapFont screenName;
     
     public void create(){
         oc = new OrthographicCamera(Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
 	oc.setToOrtho(true, Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
+        oc.update();
     }
     public ScrOptions(GamMenu _gamMenu){
         gamMenu = _gamMenu;
@@ -26,19 +25,16 @@ public class ScrOptions implements Screen, InputProcessor{
     @Override
     public void show(){
         batch = new SpriteBatch();
-        screenName = new BitmapFont();
-        btnMenuListener();
-        btnGameoverListener();
+        
     }
     @Override
     public void render(float delta) {
         Gdx.gl.glClearColor(0, 1, 1, 1); //Cyan background.
         Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
         batch.begin();
-        screenName.draw(batch, "This is the OPTIONS screen", 230, 275);
         batch.end();
     }
-
+    
     public void btnMenuListener() {
         
     }

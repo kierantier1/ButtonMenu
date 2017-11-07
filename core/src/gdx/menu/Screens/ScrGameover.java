@@ -26,8 +26,6 @@ public class ScrGameover implements Screen, InputProcessor {
 	oc.setToOrtho(true, Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
         oc.update();
         batch = new SpriteBatch();
-        oc = new OrthographicCamera(Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
-	oc.setToOrtho(true, Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
         txButtonM = new Texture("badlogic.jpg");
         sprButtonMenu = new Sprite(txButtonM);
         Gdx.input.setInputProcessor(this);
@@ -49,7 +47,7 @@ public class ScrGameover implements Screen, InputProcessor {
         batch.begin();
         batch.setProjectionMatrix(oc.combined);
         //screenName.draw(batch, "GAME OVER", 230, 275);  SetFlip() doesn't work on BitmapFont, so you should embed the text within the sprites
-        sprButtonMenu.draw(batch);            
+        sprButtonMenu.draw(batch);
         batch.end();
     }
     

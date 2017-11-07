@@ -4,8 +4,8 @@ import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.InputProcessor;
 import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.graphics.GL20;
-import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 
 import gdx.menu.GamMenu;
@@ -14,7 +14,8 @@ public class ScrMenu implements Screen, InputProcessor {
     GamMenu gamMenu;
     OrthographicCamera oc;
     SpriteBatch batch;
-    BitmapFont screenName;
+    Sprite sprButtonPlay;
+    
     public void create(){
        oc = new OrthographicCamera(Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
        oc.setToOrtho(true, Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
@@ -26,9 +27,7 @@ public class ScrMenu implements Screen, InputProcessor {
     @Override
     public void show() {
         batch = new SpriteBatch();
-        screenName = new BitmapFont();
-        btnPlayListener();
-        btnOptionsListener();
+
     }
     
     @Override
@@ -36,7 +35,7 @@ public class ScrMenu implements Screen, InputProcessor {
         Gdx.gl.glClearColor(0, 1, 0, 1); //Green background.
         Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
         batch.begin();
-        screenName.draw(batch, "This is the MENU screen", 230, 275);
+        
         batch.end();
     }
 
