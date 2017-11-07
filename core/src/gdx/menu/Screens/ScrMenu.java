@@ -5,6 +5,7 @@ import com.badlogic.gdx.InputProcessor;
 import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 
@@ -12,13 +13,13 @@ import gdx.menu.GamMenu;
 
 public class ScrMenu implements Screen, InputProcessor {
     GamMenu gamMenu;
+    Texture txButtonP;
     OrthographicCamera oc;
     SpriteBatch batch;
     Sprite sprButtonPlay;
     
     public void create(){
-       oc = new OrthographicCamera(Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
-       oc.setToOrtho(true, Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
+       
     }
     public ScrMenu(GamMenu _gamMenu) {  //Referencing the main class.
         gamMenu = _gamMenu;
@@ -26,8 +27,12 @@ public class ScrMenu implements Screen, InputProcessor {
     
     @Override
     public void show() {
-        batch = new SpriteBatch();
-
+       batch = new SpriteBatch();
+       oc = new OrthographicCamera(Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
+       oc.setToOrtho(true, Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
+       oc.update();
+       txButtonP = new Texture("badlogic.jpg");
+       sprButtonPlay = new Sprite(txButtonP);
     }
     
     @Override
@@ -35,16 +40,8 @@ public class ScrMenu implements Screen, InputProcessor {
         Gdx.gl.glClearColor(0, 1, 0, 1); //Green background.
         Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
         batch.begin();
-        
+        sprButtonPlay.draw(batch);
         batch.end();
-    }
-
-    public void btnPlayListener() {
-        
-    }
-
-    public void btnOptionsListener() {
-       
     }
 
     @Override
@@ -69,7 +66,8 @@ public class ScrMenu implements Screen, InputProcessor {
 
     @Override
     public void dispose() {
-
+        batch.dispose();
+        txButtonP.dispose();
     }
 
     @Override
