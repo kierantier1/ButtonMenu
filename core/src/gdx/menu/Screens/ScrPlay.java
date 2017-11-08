@@ -6,23 +6,22 @@ import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
-import 
+import com.badlogic.gdx.graphics.Texture;
 import gdx.menu.GamMenu;
 
 
 public class ScrPlay implements Screen, InputProcessor {
     GamMenu gamMenu;
     SpriteBatch batch;
-
-    Sprite sprButton;
+    Texture txButtonG;
+    Sprite sprButtonG;
     public ScrPlay(GamMenu _gamMenu) {  //Referencing the main class.
         gamMenu = _gamMenu;
     }
     @Override
     public void show() {
         batch = new SpriteBatch();
-        btnMenuListener();
-        btnGameoverListener();
+        txButtonG = new Texture("badlogic.jpg");
     }
     
     @Override

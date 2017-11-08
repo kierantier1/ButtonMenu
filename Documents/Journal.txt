@@ -30,3 +30,4 @@ November 7, 2017
 -Now to make hit detection work
 
 November 8, 2017
+-updating every screen to show a sprite, implementing hit detection tomorrow
