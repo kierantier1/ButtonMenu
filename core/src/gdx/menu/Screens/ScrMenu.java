@@ -27,12 +27,14 @@ public class ScrMenu implements Screen, InputProcessor {
     
     @Override
     public void show() {
-       batch = new SpriteBatch();
        oc = new OrthographicCamera(Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
        oc.setToOrtho(true, Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
-       oc.update();
+       oc.update();       
+       batch = new SpriteBatch();
        txButtonP = new Texture("badlogic.jpg");
        sprButtonPlay = new Sprite(txButtonP);
+       sprButtonPlay.setFlip(false, true);
+       Gdx.input.setInputProcessor(this);
     }
     
     @Override

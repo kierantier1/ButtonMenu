@@ -6,43 +6,40 @@ import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+import com.badlogic.gdx.graphics.Texture;
+import com.badlogic.gdx.graphics.g2d.Sprite;
 import gdx.menu.GamMenu;
 
 
 public class ScrOptions implements Screen, InputProcessor{
     GamMenu gamMenu;
     OrthographicCamera oc;
+    Texture txButtonM;
+    Sprite sprButtonMenu;
     SpriteBatch batch;
     
-    public void create(){
-        oc = new OrthographicCamera(Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
-	oc.setToOrtho(true, Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
-        oc.update();
-    }
     public ScrOptions(GamMenu _gamMenu){
         gamMenu = _gamMenu;
     }
     @Override
     public void show(){
         batch = new SpriteBatch();
-        
+        oc = new OrthographicCamera(Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
+	oc.setToOrtho(true, Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
+        oc.update();
+        txButtonM = new Texture("badlogic.jpg");
+        sprButtonMenu = new Sprite(txButtonM);
+        sprButtonMenu.setFlip(false, true);
     }
     @Override
     public void render(float delta) {
         Gdx.gl.glClearColor(0, 1, 1, 1); //Cyan background.
         Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
         batch.begin();
+        sprButtonMenu.draw(batch);
         batch.end();
     }
     
-    public void btnMenuListener() {
-        
-    }
-
-    public void btnGameoverListener() {
-        
-    }
-
     @Override
     public void resize(int width, int height) {
 
