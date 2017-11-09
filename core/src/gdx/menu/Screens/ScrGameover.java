@@ -29,7 +29,11 @@ public class ScrGameover implements Screen, InputProcessor {
 	oc.setToOrtho(true, Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
         oc.update();
         batch = new SpriteBatch();
+        txButtonP = new Texture("Play.png");
         txButtonM = new Texture("badlogic.jpg");
+        sprButtonPlay = new Sprite(txButtonP);
+        sprButtonPlay.setFlip(false, true);
+        sprButtonPlay.setX(100);
         sprButtonMenu = new Sprite(txButtonM);
         sprButtonMenu.setFlip(false, true);
         Gdx.input.setInputProcessor(this);
@@ -40,6 +44,7 @@ public class ScrGameover implements Screen, InputProcessor {
         Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
         batch.begin();
         batch.setProjectionMatrix(oc.combined);
+        sprButtonMenu.draw(batch);
         sprButtonMenu.draw(batch);
         batch.end();
     }

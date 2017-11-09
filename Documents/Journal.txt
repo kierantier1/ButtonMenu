@@ -31,3 +31,7 @@ November 7, 2017
 
 November 8, 2017
 -updating every screen to show a sprite, implementing hit detection tomorrow
+
+November 9, 2017
+-Cleaned up the Screens to prepare them for hit detection
+-trying to implement hit detection on Game Over Screen
