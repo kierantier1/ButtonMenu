@@ -1,11 +1,10 @@
 package gdx.menu.Screens;
-
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.Input;
 import com.badlogic.gdx.InputProcessor;
 import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.graphics.GL20;
-//import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.Texture;
@@ -16,7 +15,6 @@ import gdx.menu.GamMenu;
 public class ScrGameover implements Screen, InputProcessor {
     OrthographicCamera oc;
     Texture txButtonM, txButtonP;
-    //BitmapFont screenName;
     GamMenu gamMenu;
     SpriteBatch batch;
     Sprite sprButtonMenu, sprButtonPlay;
@@ -48,7 +46,7 @@ public class ScrGameover implements Screen, InputProcessor {
     
     /*
      * UpdateState(0) for Menu
-     *h UpdateState(1) for Play
+     * UpdateState(1) for Play
      */
     
     @Override
@@ -94,7 +92,15 @@ public class ScrGameover implements Screen, InputProcessor {
 
     @Override
     public boolean touchDown(int screenX, int screenY, int pointer, int button) {
-        return false;
+        if (button == Input.Buttons.LEFT) {
+			System.out.println(screenX +" " + screenY);
+			if (IsHit(screenX, screenY)) {
+                            
+			} else {
+                            
+			}
+		}
+		return false;
     }
 
     @Override

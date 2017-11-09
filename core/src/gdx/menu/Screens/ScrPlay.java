@@ -7,11 +7,13 @@ import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.Texture;
+import com.badlogic.gdx.graphics.OrthographicCamera;
 import gdx.menu.GamMenu;
 
 
 public class ScrPlay implements Screen, InputProcessor {
     GamMenu gamMenu;
+    OrthographicCamera oc;
     SpriteBatch batch;
     Texture txButtonG;
     Sprite sprButtonG;
@@ -20,8 +22,13 @@ public class ScrPlay implements Screen, InputProcessor {
     }
     @Override
     public void show() {
+        oc = new OrthographicCamera(Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
+	oc.setToOrtho(true, Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
+        oc.update();
         batch = new SpriteBatch();
         txButtonG = new Texture("badlogic.jpg");
+        sprButtonG = new Sprite(txButtonG);
+        sprButtonG.setFlip(false, true);
     }
     
     @Override
@@ -29,6 +36,8 @@ public class ScrPlay implements Screen, InputProcessor {
         Gdx.gl.glClearColor(.135f, .206f, .235f, 1); //blue background.
         Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
         batch.begin();
+        batch.setProjectionMatrix(oc.combined);
+        sprButtonG.draw(batch);
         batch.end();
 
     }
