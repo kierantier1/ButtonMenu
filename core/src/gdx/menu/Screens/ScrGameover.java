@@ -48,7 +48,7 @@ public class ScrGameover implements Screen, InputProcessor {
     
     /*
      * UpdateState(0) for Menu
-     * UpdateState(1) for Play
+     *h UpdateState(1) for Play
      */
     
     @Override
