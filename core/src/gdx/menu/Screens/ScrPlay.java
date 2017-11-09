@@ -33,14 +33,6 @@ public class ScrPlay implements Screen, InputProcessor {
 
     }
 
-    public void btnGameoverListener() {
-        
-    }
-
-    public void btnMenuListener() {
-        
-    }
-
     @Override
     public void resize(int width, int height) {
 
@@ -63,7 +55,8 @@ public class ScrPlay implements Screen, InputProcessor {
 
     @Override
     public void dispose() {
-
+        batch.dispose();
+        txButtonG.dispose();
     }
 
     @Override

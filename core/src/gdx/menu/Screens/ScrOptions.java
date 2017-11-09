@@ -62,7 +62,8 @@ public class ScrOptions implements Screen, InputProcessor{
 
     @Override
     public void dispose() {
-
+        batch.dispose();
+        txButtonM.dispose();
     }
 
     @Override
