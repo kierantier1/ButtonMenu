@@ -29,23 +29,24 @@ public class ScrGameover implements Screen, InputProcessor {
 	oc.setToOrtho(true, Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
         oc.update();
         batch = new SpriteBatch();
-        txButtonP = new Texture("Play.png");
+        txButtonP = new Texture("Play.jpg");
         txButtonM = new Texture("badlogic.jpg");
         sprButtonPlay = new Sprite(txButtonP);
         sprButtonPlay.setFlip(false, true);
-        sprButtonPlay.setX(100);
+        //sprButtonPlay.setX(1000);
+        //sprButtonPlay.setY(1000);
         sprButtonMenu = new Sprite(txButtonM);
         sprButtonMenu.setFlip(false, true);
         Gdx.input.setInputProcessor(this);
     }
     @Override
     public void render(float Delta) {
-        Gdx.gl.glClearColor(0, 0, 0, 1); //black background.
+        Gdx.gl.glClearColor(0, 1, 1, 1); //cyan background.
         Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
         batch.begin();
         batch.setProjectionMatrix(oc.combined);
-        sprButtonMenu.draw(batch);
-        sprButtonMenu.draw(batch);
+        //sprButtonMenu.draw(batch);
+        sprButtonPlay.draw(batch);
         batch.end();
     }
     
@@ -98,7 +99,7 @@ public class ScrGameover implements Screen, InputProcessor {
     @Override
     public boolean touchDown(int screenX, int screenY, int pointer, int button) {
         if (button == Input.Buttons.LEFT) {
-			System.out.println(screenX +" " + screenY);
+			//System.out.println(screenX +" " + screenY);
 			if (IsHit(screenX, screenY)) {
                             
 			} else {
@@ -128,8 +129,7 @@ public class ScrGameover implements Screen, InputProcessor {
         return false;
     }
     public boolean IsHit(int nX, int nY){
-        System.out.println("Run IsHit");
-        if(nX>sprButtonMenu.getX() && nX <sprButtonMenu.getX()+sprButtonMenu.getWidth()&& nY>sprButtonMenu.getY() && nY<sprButtonMenu.getY()+sprButtonMenu.getHeight()){
+        if(nX>sprButtonPlay.getX() && nX <sprButtonPlay.getX()+sprButtonPlay.getWidth()&& nY>sprButtonPlay.getY() && nY<sprButtonPlay.getY()+sprButtonPlay.getHeight()){
             System.out.println("hit");
             return true;
         }else{
