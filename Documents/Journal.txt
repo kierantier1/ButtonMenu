@@ -38,3 +38,8 @@ November 9, 2017
 
 November 10, 2017
 -trying to put 2 buttons on GameOver, cleaned up the Play sprite
+
+November 13, 2017
+-There are now 2 buttons on GameOver, hit detection on both, but UpdateState on the methods results in error, listed below
+-non-static method updateState(int) cannot be referenced from a static context
+

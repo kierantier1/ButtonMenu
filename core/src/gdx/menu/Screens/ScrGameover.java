@@ -30,13 +30,14 @@ public class ScrGameover implements Screen, InputProcessor {
         oc.update();
         batch = new SpriteBatch();
         txButtonP = new Texture("Play.jpg");
-        txButtonM = new Texture("badlogic.jpg");
+        txButtonM = new Texture("Menu.jpg");
         sprButtonPlay = new Sprite(txButtonP);
         sprButtonPlay.setFlip(false, true);
-        //sprButtonPlay.setX(1000);
-        //sprButtonPlay.setY(1000);
+        sprButtonPlay.setY(Gdx.graphics.getHeight()-sprButtonPlay.getHeight());
         sprButtonMenu = new Sprite(txButtonM);
         sprButtonMenu.setFlip(false, true);
+        sprButtonMenu.setX(Gdx.graphics.getWidth()-sprButtonMenu.getWidth());
+        sprButtonMenu.setY(Gdx.graphics.getHeight()-sprButtonMenu.getHeight());
         Gdx.input.setInputProcessor(this);
     }
     @Override
@@ -45,8 +46,8 @@ public class ScrGameover implements Screen, InputProcessor {
         Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
         batch.begin();
         batch.setProjectionMatrix(oc.combined);
-        //sprButtonMenu.draw(batch);
         sprButtonPlay.draw(batch);
+        sprButtonMenu.draw(batch);
         batch.end();
     }
     
@@ -79,6 +80,7 @@ public class ScrGameover implements Screen, InputProcessor {
     public void dispose() {
         batch.dispose();
         txButtonM.dispose();
+        txButtonP.dispose();
     }
 
     @Override
@@ -100,8 +102,11 @@ public class ScrGameover implements Screen, InputProcessor {
     public boolean touchDown(int screenX, int screenY, int pointer, int button) {
         if (button == Input.Buttons.LEFT) {
 			//System.out.println(screenX +" " + screenY);
-			if (IsHit(screenX, screenY)) {
-                            
+			if (IsHit(screenX, screenY) == 1) {
+                            //GamMenu.updateState(1);
+                            System.out.println("Hit Play");
+                        } else if(IsHit(screenX, screenY) == 2){
+                            System.out.println("Hit Menu");
 			} else {
                             
 			}
@@ -128,12 +133,13 @@ public class ScrGameover implements Screen, InputProcessor {
     public boolean scrolled(int amount) {
         return false;
     }
-    public boolean IsHit(int nX, int nY){
+    public int IsHit(int nX, int nY){
         if(nX>sprButtonPlay.getX() && nX <sprButtonPlay.getX()+sprButtonPlay.getWidth()&& nY>sprButtonPlay.getY() && nY<sprButtonPlay.getY()+sprButtonPlay.getHeight()){
-            System.out.println("hit");
-            return true;
+            return 1;
+        }else if(nX>sprButtonMenu.getX() && nX < sprButtonMenu.getX()+sprButtonMenu.getWidth() && nY > sprButtonMenu.getY() && nY < sprButtonMenu.getY() + sprButtonMenu.getHeight()){
+            return 2;
         }else{
-            return false;
+            return 0;
         }
-    }
+    }    
 }
