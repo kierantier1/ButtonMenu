@@ -43,3 +43,4 @@ November 13, 2017
 -There are now 2 buttons on GameOver, hit detection on both, but UpdateState on the methods results in error, listed below
 -non-static method updateState(int) cannot be referenced from a static context
 -starting to implement hit detection on ScrMenu
+-screen play and options are having errors parsing the file

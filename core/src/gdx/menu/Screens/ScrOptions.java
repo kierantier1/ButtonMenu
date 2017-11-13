@@ -1,5 +1,5 @@
-
 package gdx.menu.Screens;
+
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.InputProcessor;
 import com.badlogic.gdx.Screen;
@@ -10,27 +10,29 @@ import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.Sprite;
 import gdx.menu.GamMenu;
 
+public class ScrOptions implements Screen, InputProcessor {
 
-public class ScrOptions implements Screen, InputProcessor{
     GamMenu gamMenu;
     OrthographicCamera oc;
     Texture txButtonM;
     Sprite sprButtonMenu;
     SpriteBatch batch;
-    
-    public ScrOptions(GamMenu _gamMenu){
+
+    public ScrOptions(GamMenu _gamMenu) {
         gamMenu = _gamMenu;
     }
+
     @Override
-    public void show(){
+    public void show() {
         batch = new SpriteBatch();
         oc = new OrthographicCamera(Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
-	oc.setToOrtho(true, Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
+        oc.setToOrtho(true, Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
         oc.update();
         txButtonM = new Texture("badlogic.jpg");
         sprButtonMenu = new Sprite(txButtonM);
         sprButtonMenu.setFlip(false, true);
     }
+
     @Override
     public void render(float delta) {
         Gdx.gl.glClearColor(0, 1, 1, 1); //Cyan background.
@@ -40,25 +42,21 @@ public class ScrOptions implements Screen, InputProcessor{
         sprButtonMenu.draw(batch);
         batch.end();
     }
-    
+
     @Override
     public void resize(int width, int height) {
-
     }
 
     @Override
     public void pause() {
-
     }
 
     @Override
     public void resume() {
-
     }
 
     @Override
     public void hide() {
-
     }
 
     @Override

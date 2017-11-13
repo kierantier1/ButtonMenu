@@ -42,7 +42,7 @@ public class ScrGameover implements Screen, InputProcessor {
     }
     @Override
     public void render(float Delta) {
-        Gdx.gl.glClearColor(0, 1, 1, 1); //cyan background.
+        Gdx.gl.glClearColor(0, 1, 1, 1); //Cyan background.
         Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
         batch.begin();
         batch.setProjectionMatrix(oc.combined);
