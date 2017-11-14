@@ -95,10 +95,10 @@ public class ScrMenu implements Screen, InputProcessor {
         if (button == Input.Buttons.LEFT) {
             if(isHit(screenX, screenY, sprButtonPlay)){
                 System.out.println("Hit Play");
-                //GamMenu.updateState(1);
+                gamMenu.updateState(1);
             }else if(isHit(screenX, screenY, sprButtonTools)){
                 System.out.println("Hit Tools");
-                //GamMenu.updateState(3);
+                gamMenu.updateState(3);
             }
         }
         return false;

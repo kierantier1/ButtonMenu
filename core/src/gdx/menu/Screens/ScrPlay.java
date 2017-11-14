@@ -96,10 +96,10 @@ public class ScrPlay implements Screen, InputProcessor {
         if (button == Input.Buttons.LEFT) {
             //System.out.println(screenX +" " + screenY);
             if (isHit(screenX, screenY, sprButtonTools)) {
-                //GamMenu.updateState(3);
+                gamMenu.updateState(3);
                 System.out.println("Hit Tools");
             } else if (isHit(screenX, screenY, sprButtonQuit)) {
-                //GamMenu.updateState(2);
+                gamMenu.updateState(2);
                 System.out.println("Hit Quit");
             } else {
             }

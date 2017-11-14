@@ -103,10 +103,10 @@ public class ScrGameover implements Screen, InputProcessor {
         if (button == Input.Buttons.LEFT) {
 			//System.out.println(screenX +" " + screenY);
 			if (isHit(screenX, screenY, sprButtonPlay)) {
-                            //GamMenu.updateState(1);
+                            gamMenu.updateState(1);
                             System.out.println("Hit Play");
                         } else if(isHit(screenX, screenY, sprButtonMenu)){
-                            //GamMenu.updateState(0);
+                            gamMenu.updateState(0);
                             System.out.println("Hit Menu");
 			}
 		}
