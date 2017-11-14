@@ -18,7 +18,7 @@ public class ScrPlay implements Screen, InputProcessor {
     SpriteBatch batch;
     Texture txButtonG, txButtonT;
     Sprite sprButtonGameOver, sprButtonTools;
-
+    
     public ScrPlay(GamMenu _gamMenu) {  //Referencing the main class.
         gamMenu = _gamMenu;
     }
@@ -33,11 +33,12 @@ public class ScrPlay implements Screen, InputProcessor {
         txButtonG = new Texture("Quit.jpg");
         sprButtonGameOver = new Sprite(txButtonG);
         sprButtonGameOver.setFlip(false, true);
-        sprButtonGameOver.setY(Gdx.graphics.getHeight()-sprButtonGameOver.getHeight());
+        sprButtonGameOver.setY(Gdx.graphics.getHeight() - sprButtonGameOver.getHeight());
         sprButtonTools = new Sprite(txButtonT);
         sprButtonTools.setFlip(false, true);
-        sprButtonTools.setX(Gdx.graphics.getWidth()-sprButtonTools.getWidth());
-        sprButtonTools.setY(Gdx.graphics.getHeight()-sprButtonTools.getHeight());
+        sprButtonTools.setX(Gdx.graphics.getWidth() - sprButtonTools.getWidth());
+        sprButtonTools.setY(Gdx.graphics.getHeight() - sprButtonTools.getHeight());
+        Gdx.input.setInputProcessor(this);
     }
 
     @Override
@@ -92,16 +93,15 @@ public class ScrPlay implements Screen, InputProcessor {
     @Override
     public boolean touchDown(int screenX, int screenY, int pointer, int button) {
         if (button == Input.Buttons.LEFT) {
-			//System.out.println(screenX +" " + screenY);
-			if (IsHit(screenX, screenY) == 1) {
-                            //GamMenu.updateState(1);
-                            System.out.println("Hit Tools");
-                        } else if(IsHit(screenX, screenY) == 2){
-                            System.out.println("Hit Quit");
-			} else {
-
-			}
-		}
+            //System.out.println(screenX +" " + screenY);
+            if (IsHit(screenX, screenY) == 1) {
+                //GamMenu.updateState(1);
+                System.out.println("Hit Tools");
+            } else if (IsHit(screenX, screenY) == 2) {
+                System.out.println("Hit Quit");
+            } else {
+            }
+        }
         return false;
     }
 
@@ -124,13 +124,13 @@ public class ScrPlay implements Screen, InputProcessor {
     public boolean scrolled(int amount) {
         return false;
     }
-    
-    public int IsHit(int nX, int nY){
-        if(nX>sprButtonTools.getX() && nX <sprButtonTools.getX()+sprButtonTools.getWidth()&& nY>sprButtonTools.getY() && nY<sprButtonTools.getY()+sprButtonTools.getHeight()){
+
+    public int IsHit(int nX, int nY) {
+        if (nX > sprButtonTools.getX() && nX < sprButtonTools.getX() + sprButtonTools.getWidth() && nY > sprButtonTools.getY() && nY < sprButtonTools.getY() + sprButtonTools.getHeight()) {
             return 1;
-        }else if(nX>sprButtonGameOver.getX() && nX < sprButtonGameOver.getX()+sprButtonGameOver.getWidth() && nY > sprButtonGameOver.getY() && nY < sprButtonGameOver.getY() + sprButtonGameOver.getHeight()){
+        } else if (nX > sprButtonGameOver.getX() && nX < sprButtonGameOver.getX() + sprButtonGameOver.getWidth() && nY > sprButtonGameOver.getY() && nY < sprButtonGameOver.getY() + sprButtonGameOver.getHeight()) {
             return 2;
-        }else{
+        } else {
             return 0;
         }
     }

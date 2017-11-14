@@ -45,3 +45,7 @@ November 13, 2017
 -starting to implement hit detection on ScrMenu
 -screen play and options are having errors parsing the file
 -the Play Screen doesn't detect hits
+
+November 14, 2017
+-comparing ScrMenu and ScrPlay to determine any errors that would prevent it from being run
+-forgot to set the inputprocessor to (this), that fixed the hit detection errors on play
