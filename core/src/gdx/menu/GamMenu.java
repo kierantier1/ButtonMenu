@@ -3,7 +3,7 @@ import com.badlogic.gdx.Game;
 import gdx.menu.Screens.ScrMenu;
 import gdx.menu.Screens.ScrPlay;
 import gdx.menu.Screens.ScrGameover;
-import gdx.menu.Screens.ScrOptions;
+import gdx.menu.Screens.ScrTools;
 
 
 
@@ -12,7 +12,7 @@ public class GamMenu extends Game {
     ScrMenu scrMenu;
     ScrPlay scrPlay;
     ScrGameover scrGameover;
-    ScrOptions scrOptions;
+    ScrTools scrTools;
     int nScreen; // 0 for menu, 1 for play, 2 for gameover, 3 for options
     
     public void updateState(int _nScreen) {
@@ -24,7 +24,7 @@ public class GamMenu extends Game {
         } else if (nScreen ==2) {
             setScreen(scrGameover);
         } else if (nScreen == 3){
-            setScreen(scrOptions);
+            setScreen(scrTools);
         }
     }
 
@@ -35,7 +35,7 @@ public class GamMenu extends Game {
         scrMenu = new ScrMenu(this);
         scrPlay = new ScrPlay(this);
         scrGameover = new ScrGameover(this);
-        scrOptions = new ScrOptions(this);
+        scrTools = new ScrTools(this);
         updateState(0);
     }
 

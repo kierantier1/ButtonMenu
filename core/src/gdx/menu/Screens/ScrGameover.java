@@ -102,14 +102,12 @@ public class ScrGameover implements Screen, InputProcessor {
     public boolean touchDown(int screenX, int screenY, int pointer, int button) {
         if (button == Input.Buttons.LEFT) {
 			//System.out.println(screenX +" " + screenY);
-			if (IsHit(screenX, screenY) == 1) {
+			if (isHit(screenX, screenY, sprButtonPlay)) {
                             //GamMenu.updateState(1);
                             System.out.println("Hit Play");
-                        } else if(IsHit(screenX, screenY) == 2){
+                        } else if(isHit(screenX, screenY, sprButtonMenu)){
                             //GamMenu.updateState(0);
                             System.out.println("Hit Menu");
-			} else {
-                            
 			}
 		}
 		return false;
@@ -134,13 +132,11 @@ public class ScrGameover implements Screen, InputProcessor {
     public boolean scrolled(int amount) {
         return false;
     }
-    public int IsHit(int nX, int nY){
-        if(nX>sprButtonPlay.getX() && nX <sprButtonPlay.getX()+sprButtonPlay.getWidth()&& nY>sprButtonPlay.getY() && nY<sprButtonPlay.getY()+sprButtonPlay.getHeight()){
-            return 1;
-        }else if(nX>sprButtonMenu.getX() && nX < sprButtonMenu.getX()+sprButtonMenu.getWidth() && nY > sprButtonMenu.getY() && nY < sprButtonMenu.getY() + sprButtonMenu.getHeight()){
-            return 2;
-        }else{
-            return 0;
+    public boolean isHit(int nX, int nY, Sprite sprBtn){
+        if (nX > sprBtn.getX() && nX < sprBtn.getX() + sprBtn.getWidth() && nY > sprBtn.getY() && nY < sprBtn.getY() + sprBtn.getHeight()) {
+            return true;
+        } else {
+            return false;
         }
-    }    
-}
+    }
+}    

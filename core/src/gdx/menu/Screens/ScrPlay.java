@@ -73,6 +73,7 @@ public class ScrPlay implements Screen, InputProcessor {
     public void dispose() {
         batch.dispose();
         txButtonG.dispose();
+        txButtonT.dispose();
     }
 
     @Override
@@ -94,10 +95,10 @@ public class ScrPlay implements Screen, InputProcessor {
     public boolean touchDown(int screenX, int screenY, int pointer, int button) {
         if (button == Input.Buttons.LEFT) {
             //System.out.println(screenX +" " + screenY);
-            if (IsHit(screenX, screenY) == 1) {
+            if (isHit(screenX, screenY, sprButtonTools)) {
                 //GamMenu.updateState(3);
                 System.out.println("Hit Tools");
-            } else if (IsHit(screenX, screenY) == 2) {
+            } else if (isHit(screenX, screenY, sprButtonQuit)) {
                 //GamMenu.updateState(2);
                 System.out.println("Hit Quit");
             } else {
@@ -126,13 +127,11 @@ public class ScrPlay implements Screen, InputProcessor {
         return false;
     }
 
-    public int IsHit(int nX, int nY) {
-        if (nX > sprButtonTools.getX() && nX < sprButtonTools.getX() + sprButtonTools.getWidth() && nY > sprButtonTools.getY() && nY < sprButtonTools.getY() + sprButtonTools.getHeight()) {
-            return 1;
-        } else if (nX > sprButtonQuit.getX() && nX < sprButtonQuit.getX() + sprButtonQuit.getWidth() && nY > sprButtonQuit.getY() && nY < sprButtonQuit.getY() + sprButtonQuit.getHeight()) {
-            return 2;
+    public boolean isHit(int nX, int nY, Sprite sprBtn) {
+        if (nX > sprBtn.getX() && nX < sprBtn.getX() + sprBtn.getWidth() && nY > sprBtn.getY() && nY < sprBtn.getY() + sprBtn.getHeight()) {
+            return true;
         } else {
-            return 0;
+            return false;
         }
     }
 }

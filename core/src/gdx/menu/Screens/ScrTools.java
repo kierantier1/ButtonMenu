@@ -11,7 +11,7 @@ import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.Sprite;
 import gdx.menu.GamMenu;
 
-public class ScrOptions implements Screen, InputProcessor {
+public class ScrTools implements Screen, InputProcessor {
 
     GamMenu gamMenu;
     OrthographicCamera oc;
@@ -19,7 +19,7 @@ public class ScrOptions implements Screen, InputProcessor {
     Sprite sprButtonMenu, sprButtonQuit;
     SpriteBatch batch;
 
-    public ScrOptions(GamMenu _gamMenu) {
+    public ScrTools(GamMenu _gamMenu) {
         gamMenu = _gamMenu;
     }
 
@@ -72,6 +72,7 @@ public class ScrOptions implements Screen, InputProcessor {
     public void dispose() {
         batch.dispose();
         txButtonM.dispose();
+        txButtonQ.dispose();
     }
 
     @Override
@@ -93,10 +94,10 @@ public class ScrOptions implements Screen, InputProcessor {
     public boolean touchDown(int screenX, int screenY, int pointer, int button) {
         if (button == Input.Buttons.LEFT) {
             //System.out.println(screenX +" " + screenY);
-            if (IsHit(screenX, screenY) == 1) {
+            if (isHit(screenX, screenY, sprButtonMenu)) {
                 //GamMenu.updateState(0);
                 System.out.println("Hit Menu");
-            } else if (IsHit(screenX, screenY) == 2) {
+            } else if (isHit(screenX, screenY, sprButtonQuit)) {
                 //GamMenu.updateState(2);
                 System.out.println("Hit Quit");
             } else {
@@ -124,13 +125,11 @@ public class ScrOptions implements Screen, InputProcessor {
     public boolean scrolled(int amount) {
         return false;
     }
-    public int IsHit(int nX, int nY) {
-        if (nX > sprButtonMenu.getX() && nX < sprButtonMenu.getX() + sprButtonMenu.getWidth() && nY > sprButtonMenu.getY() && nY < sprButtonMenu.getY() + sprButtonMenu.getHeight()) {
-            return 1;
-        } else if (nX > sprButtonQuit.getX() && nX < sprButtonQuit.getX() + sprButtonQuit.getWidth() && nY > sprButtonQuit.getY() && nY < sprButtonQuit.getY() + sprButtonQuit.getHeight()) {
-            return 2;
+    public boolean isHit(int nX, int nY, Sprite sprBtn) {
+        if (nX > sprBtn.getX() && nX < sprBtn.getX() + sprBtn.getWidth() && nY > sprBtn.getY() && nY < sprBtn.getY() + sprBtn.getHeight()) {
+            return true;
         } else {
-            return 0;
+            return false;
         }
     }
 }

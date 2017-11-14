@@ -72,6 +72,7 @@ public class ScrMenu implements Screen, InputProcessor {
     public void dispose() {
         batch.dispose();
         txButtonP.dispose();
+        txButtonT.dispose();
     }
 
     @Override
@@ -92,19 +93,17 @@ public class ScrMenu implements Screen, InputProcessor {
     @Override
     public boolean touchDown(int screenX, int screenY, int pointer, int button) {
         if (button == Input.Buttons.LEFT) {
-            //System.out.println(screenX +" " + screenY);
-            if (IsHit(screenX, screenY) == 1) {
-                //GamMenu.updateState(1);
+            if(isHit(screenX, screenY, sprButtonPlay)){
                 System.out.println("Hit Play");
-            } else if (IsHit(screenX, screenY) == 2) {
-                //GamMenu.updateState(3);
+                //GamMenu.updateState(1);
+            }else if(isHit(screenX, screenY, sprButtonTools)){
                 System.out.println("Hit Tools");
-            } else {
+                //GamMenu.updateState(3);
             }
         }
         return false;
     }
-
+        
     @Override
     public boolean touchUp(int screenX, int screenY, int pointer, int button) {
         return false;
@@ -125,13 +124,11 @@ public class ScrMenu implements Screen, InputProcessor {
         return false;
     }
 
-    public int IsHit(int nX, int nY) {
-        if (nX > sprButtonPlay.getX() && nX < sprButtonPlay.getX() + sprButtonPlay.getWidth() && nY > sprButtonPlay.getY() && nY < sprButtonPlay.getY() + sprButtonPlay.getHeight()) {
-            return 1;
-        } else if (nX > sprButtonTools.getX() && nX < sprButtonTools.getX() + sprButtonTools.getWidth() && nY > sprButtonTools.getY() && nY < sprButtonTools.getY() + sprButtonTools.getHeight()) {
-            return 2;
+    public boolean isHit(int nX, int nY, Sprite sprBtn) {
+        if (nX > sprBtn.getX() && nX < sprBtn.getX() + sprBtn.getWidth() && nY > sprBtn.getY() && nY < sprBtn.getY() + sprBtn.getHeight()) {
+            return true;
         } else {
-            return 0;
+            return false;
         }
     }
 }
