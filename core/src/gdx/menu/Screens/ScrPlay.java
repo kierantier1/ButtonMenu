@@ -1,6 +1,7 @@
 package gdx.menu.Screens;
 
 import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.Input;
 import com.badlogic.gdx.InputProcessor;
 import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.graphics.GL20;
@@ -15,8 +16,8 @@ public class ScrPlay implements Screen, InputProcessor {
     GamMenu gamMenu;
     OrthographicCamera oc;
     SpriteBatch batch;
-    Texture txButtonG;
-    Sprite sprButtonG;
+    Texture txButtonG, txButtonT;
+    Sprite sprButtonGameOver, sprButtonTools;
 
     public ScrPlay(GamMenu _gamMenu) {  //Referencing the main class.
         gamMenu = _gamMenu;
@@ -28,9 +29,15 @@ public class ScrPlay implements Screen, InputProcessor {
         oc.setToOrtho(true, Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
         oc.update();
         batch = new SpriteBatch();
-        txButtonG = new Texture("badlogic.jpg");
-        sprButtonG = new Sprite(txButtonG);
-        sprButtonG.setFlip(false, true);
+        txButtonT = new Texture("Tools.jpg");
+        txButtonG = new Texture("Quit.jpg");
+        sprButtonGameOver = new Sprite(txButtonG);
+        sprButtonGameOver.setFlip(false, true);
+        sprButtonGameOver.setY(Gdx.graphics.getHeight()-sprButtonGameOver.getHeight());
+        sprButtonTools = new Sprite(txButtonT);
+        sprButtonTools.setFlip(false, true);
+        sprButtonTools.setX(Gdx.graphics.getWidth()-sprButtonTools.getWidth());
+        sprButtonTools.setY(Gdx.graphics.getHeight()-sprButtonTools.getHeight());
     }
 
     @Override
@@ -39,7 +46,8 @@ public class ScrPlay implements Screen, InputProcessor {
         Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
         batch.begin();
         batch.setProjectionMatrix(oc.combined);
-        sprButtonG.draw(batch);
+        sprButtonGameOver.draw(batch);
+        sprButtonTools.draw(batch);
         batch.end();
 
     }
@@ -83,6 +91,17 @@ public class ScrPlay implements Screen, InputProcessor {
 
     @Override
     public boolean touchDown(int screenX, int screenY, int pointer, int button) {
+        if (button == Input.Buttons.LEFT) {
+			//System.out.println(screenX +" " + screenY);
+			if (IsHit(screenX, screenY) == 1) {
+                            //GamMenu.updateState(1);
+                            System.out.println("Hit Tools");
+                        } else if(IsHit(screenX, screenY) == 2){
+                            System.out.println("Hit Quit");
+			} else {
+
+			}
+		}
         return false;
     }
 
@@ -104,5 +123,15 @@ public class ScrPlay implements Screen, InputProcessor {
     @Override
     public boolean scrolled(int amount) {
         return false;
+    }
+    
+    public int IsHit(int nX, int nY){
+        if(nX>sprButtonTools.getX() && nX <sprButtonTools.getX()+sprButtonTools.getWidth()&& nY>sprButtonTools.getY() && nY<sprButtonTools.getY()+sprButtonTools.getHeight()){
+            return 1;
+        }else if(nX>sprButtonGameOver.getX() && nX < sprButtonGameOver.getX()+sprButtonGameOver.getWidth() && nY > sprButtonGameOver.getY() && nY < sprButtonGameOver.getY() + sprButtonGameOver.getHeight()){
+            return 2;
+        }else{
+            return 0;
+        }
     }
 }

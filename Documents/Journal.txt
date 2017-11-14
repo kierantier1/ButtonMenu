@@ -44,3 +44,4 @@ November 13, 2017
 -non-static method updateState(int) cannot be referenced from a static context
 -starting to implement hit detection on ScrMenu
 -screen play and options are having errors parsing the file
+-the Play Screen doesn't detect hits
