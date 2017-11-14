@@ -1,6 +1,7 @@
 package gdx.menu.Screens;
 
 import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.Input;
 import com.badlogic.gdx.InputProcessor;
 import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.graphics.GL20;
@@ -14,8 +15,8 @@ public class ScrOptions implements Screen, InputProcessor {
 
     GamMenu gamMenu;
     OrthographicCamera oc;
-    Texture txButtonM;
-    Sprite sprButtonMenu;
+    Texture txButtonM, txButtonQ;
+    Sprite sprButtonMenu, sprButtonQuit;
     SpriteBatch batch;
 
     public ScrOptions(GamMenu _gamMenu) {
@@ -28,9 +29,16 @@ public class ScrOptions implements Screen, InputProcessor {
         oc = new OrthographicCamera(Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
         oc.setToOrtho(true, Gdx.graphics.getWidth(), Gdx.graphics.getHeight());
         oc.update();
-        txButtonM = new Texture("badlogic.jpg");
+        txButtonM = new Texture("Menu.jpg");
         sprButtonMenu = new Sprite(txButtonM);
         sprButtonMenu.setFlip(false, true);
+        sprButtonMenu.setY(Gdx.graphics.getHeight() - sprButtonMenu.getHeight());
+        txButtonQ = new Texture("Quit.jpg");
+        sprButtonQuit = new Sprite(txButtonQ);
+        sprButtonQuit.setFlip(false, true);
+        sprButtonQuit.setY(Gdx.graphics.getHeight() - sprButtonQuit.getHeight());
+        sprButtonQuit.setX(Gdx.graphics.getWidth() - sprButtonQuit.getWidth());
+        Gdx.input.setInputProcessor(this);
     }
 
     @Override
@@ -40,6 +48,7 @@ public class ScrOptions implements Screen, InputProcessor {
         batch.begin();
         batch.setProjectionMatrix(oc.combined);
         sprButtonMenu.draw(batch);
+        sprButtonQuit.draw(batch);
         batch.end();
     }
 
@@ -82,6 +91,17 @@ public class ScrOptions implements Screen, InputProcessor {
 
     @Override
     public boolean touchDown(int screenX, int screenY, int pointer, int button) {
+        if (button == Input.Buttons.LEFT) {
+            //System.out.println(screenX +" " + screenY);
+            if (IsHit(screenX, screenY) == 1) {
+                //GamMenu.updateState(0);
+                System.out.println("Hit Menu");
+            } else if (IsHit(screenX, screenY) == 2) {
+                //GamMenu.updateState(2);
+                System.out.println("Hit Quit");
+            } else {
+            }
+        }
         return false;
     }
 
@@ -103,5 +123,14 @@ public class ScrOptions implements Screen, InputProcessor {
     @Override
     public boolean scrolled(int amount) {
         return false;
+    }
+    public int IsHit(int nX, int nY) {
+        if (nX > sprButtonMenu.getX() && nX < sprButtonMenu.getX() + sprButtonMenu.getWidth() && nY > sprButtonMenu.getY() && nY < sprButtonMenu.getY() + sprButtonMenu.getHeight()) {
+            return 1;
+        } else if (nX > sprButtonQuit.getX() && nX < sprButtonQuit.getX() + sprButtonQuit.getWidth() && nY > sprButtonQuit.getY() && nY < sprButtonQuit.getY() + sprButtonQuit.getHeight()) {
+            return 2;
+        } else {
+            return 0;
+        }
     }
 }

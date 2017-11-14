@@ -17,7 +17,7 @@ public class ScrPlay implements Screen, InputProcessor {
     OrthographicCamera oc;
     SpriteBatch batch;
     Texture txButtonG, txButtonT;
-    Sprite sprButtonGameOver, sprButtonTools;
+    Sprite sprButtonQuit, sprButtonTools;
     
     public ScrPlay(GamMenu _gamMenu) {  //Referencing the main class.
         gamMenu = _gamMenu;
@@ -31,9 +31,9 @@ public class ScrPlay implements Screen, InputProcessor {
         batch = new SpriteBatch();
         txButtonT = new Texture("Tools.jpg");
         txButtonG = new Texture("Quit.jpg");
-        sprButtonGameOver = new Sprite(txButtonG);
-        sprButtonGameOver.setFlip(false, true);
-        sprButtonGameOver.setY(Gdx.graphics.getHeight() - sprButtonGameOver.getHeight());
+        sprButtonQuit = new Sprite(txButtonG);
+        sprButtonQuit.setFlip(false, true);
+        sprButtonQuit.setY(Gdx.graphics.getHeight() - sprButtonQuit.getHeight());
         sprButtonTools = new Sprite(txButtonT);
         sprButtonTools.setFlip(false, true);
         sprButtonTools.setX(Gdx.graphics.getWidth() - sprButtonTools.getWidth());
@@ -47,7 +47,7 @@ public class ScrPlay implements Screen, InputProcessor {
         Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
         batch.begin();
         batch.setProjectionMatrix(oc.combined);
-        sprButtonGameOver.draw(batch);
+        sprButtonQuit.draw(batch);
         sprButtonTools.draw(batch);
         batch.end();
 
@@ -95,9 +95,10 @@ public class ScrPlay implements Screen, InputProcessor {
         if (button == Input.Buttons.LEFT) {
             //System.out.println(screenX +" " + screenY);
             if (IsHit(screenX, screenY) == 1) {
-                //GamMenu.updateState(1);
+                //GamMenu.updateState(3);
                 System.out.println("Hit Tools");
             } else if (IsHit(screenX, screenY) == 2) {
+                //GamMenu.updateState(2);
                 System.out.println("Hit Quit");
             } else {
             }
@@ -128,7 +129,7 @@ public class ScrPlay implements Screen, InputProcessor {
     public int IsHit(int nX, int nY) {
         if (nX > sprButtonTools.getX() && nX < sprButtonTools.getX() + sprButtonTools.getWidth() && nY > sprButtonTools.getY() && nY < sprButtonTools.getY() + sprButtonTools.getHeight()) {
             return 1;
-        } else if (nX > sprButtonGameOver.getX() && nX < sprButtonGameOver.getX() + sprButtonGameOver.getWidth() && nY > sprButtonGameOver.getY() && nY < sprButtonGameOver.getY() + sprButtonGameOver.getHeight()) {
+        } else if (nX > sprButtonQuit.getX() && nX < sprButtonQuit.getX() + sprButtonQuit.getWidth() && nY > sprButtonQuit.getY() && nY < sprButtonQuit.getY() + sprButtonQuit.getHeight()) {
             return 2;
         } else {
             return 0;

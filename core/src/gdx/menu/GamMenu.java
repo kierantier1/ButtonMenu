@@ -36,7 +36,7 @@ public class GamMenu extends Game {
         scrPlay = new ScrPlay(this);
         scrGameover = new ScrGameover(this);
         scrOptions = new ScrOptions(this);
-        updateState(1);
+        updateState(0);
     }
 
     @Override
